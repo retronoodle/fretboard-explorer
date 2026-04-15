@@ -32,7 +32,7 @@ function fretboard_explorer_load_textdomain() {
     load_plugin_textdomain(
         'fretboard-explorer',
         false,
-        dirname( FRETTBOARD_EXPLORER_BASENAME ) . '/languages/'
+        dirname( FRETBOARD_EXPLORER_BASENAME ) . '/languages/'
     );
 }
 add_action( 'plugins_loaded', 'fretboard_explorer_load_textdomain' );
@@ -43,16 +43,16 @@ add_action( 'plugins_loaded', 'fretboard_explorer_load_textdomain' );
 function fretboard_explorer_enqueue_assets() {
     wp_register_style(
         'fretboard-explorer',
-        FRETTBOARD_EXPLORER_URL . 'build/index.css',
+        FRETBOARD_EXPLORER_URL . 'build/index.css',
         array(),
-        FRETTBOARD_EXPLORER_VERSION
+        FRETBOARD_EXPLORER_VERSION
     );
 
     wp_register_script(
         'fretboard-explorer',
-        FRETTBOARD_EXPLORER_URL . 'build/index.js',
+        FRETBOARD_EXPLORER_URL . 'build/index.js',
         array(),
-        FRETTBOARD_EXPLORER_VERSION,
+        FRETBOARD_EXPLORER_VERSION,
         true
     );
 }
@@ -62,7 +62,7 @@ add_action( 'wp_enqueue_scripts', 'fretboard_explorer_enqueue_assets' );
  * Register Gutenberg block
  */
 function fretboard_explorer_register_block() {
-    register_block_type( FRETTBOARD_EXPLORER_DIR . 'build/block.json' );
+    register_block_type( FRETBOARD_EXPLORER_DIR . 'build/block.json' );
 }
 add_action( 'init', 'fretboard_explorer_register_block' );
 
