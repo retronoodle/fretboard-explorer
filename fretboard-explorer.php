@@ -38,9 +38,12 @@ function fretboard_explorer_load_textdomain() {
 add_action( 'plugins_loaded', 'fretboard_explorer_load_textdomain' );
 
 /**
- * Enqueue frontend assets only when needed
+ * Register frontend asset handles.
+ *
+ * Must run at a priority lower than fretboard_explorer_conditional_enqueue (5)
+ * so handles exist before anything tries to enqueue them.
  */
-function fretboard_explorer_enqueue_assets() {
+function fretboard_explorer_register_assets() {
     wp_register_style(
         'fretboard-explorer',
         FRETBOARD_EXPLORER_URL . 'build/index.css',
@@ -56,7 +59,7 @@ function fretboard_explorer_enqueue_assets() {
         true
     );
 }
-add_action( 'wp_enqueue_scripts', 'fretboard_explorer_enqueue_assets' );
+add_action( 'wp_enqueue_scripts', 'fretboard_explorer_register_assets', 1 );
 
 /**
  * Register Gutenberg block
@@ -87,6 +90,9 @@ function fretboard_explorer_shortcode( $atts ) {
         'fretboard'
     );
 
+    // Fallback enqueue for non-singular contexts (widgets, page builders, REST)
+    // where fretboard_explorer_conditional_enqueue() would have returned false.
+    // Handles are guaranteed registered by fretboard_explorer_register_assets() at priority 1.
     wp_enqueue_style( 'fretboard-explorer' );
     wp_enqueue_script( 'fretboard-explorer' );
 
@@ -114,25 +120,9 @@ function fretboard_explorer_shortcode( $atts ) {
 add_shortcode( 'fretboard', 'fretboard_explorer_shortcode' );
 
 /**
- * Conditional asset loading - detect if block/shortcode is used
+ * Enqueue assets when our block or shortcode is detected in singular post content.
+ * Relies on fretboard_explorer_register_assets() having run first (priority 1).
  */
-function fretboard_explorer_should_load_assets() {
-    // Check if we're in admin or doing AJAX - load assets anyway for block editor
-    if ( is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-        return true;
-    }
-
-    // Check post content for our block or shortcode
-    if ( is_singular() ) {
-        global $post;
-        if ( $post && ( has_block( 'fretboard-explorer/fretboard', $post ) || strpos( $post->post_content, '[fretboard' ) !== false ) ) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
 function fretboard_explorer_conditional_enqueue() {
     if ( fretboard_explorer_should_load_assets() ) {
         wp_enqueue_style( 'fretboard-explorer' );

@@ -216,7 +216,7 @@ registerBlockType( 'fretboard-explorer/fretboard', {
             <div key="preview" { ...blockProps }>
                 <div style={ previewStyle }>
                     <div
-                        class="fretboard-preview"
+                        className="fretboard-preview"
                         dangerouslySetInnerHTML={ { __html: renderFretboard( attributes ) } }
                     />
                 </div>
@@ -226,7 +226,7 @@ registerBlockType( 'fretboard-explorer/fretboard', {
     save: function( { attributes } ) {
         return (
             <div
-                class="fretboard-block"
+                className="fretboard-block"
                 data-config={ JSON.stringify( attributes ) }
             />
         );

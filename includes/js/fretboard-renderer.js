@@ -90,6 +90,10 @@ function renderFretboard(config = {}) {
 
     svg += `<rect width="100%" height="100%" fill="${theme.background}"/>`;
 
+    if (cfg.handed === 'left' && cfg.orientation === 'horizontal') {
+        svg += `<g transform="scale(-1,1) translate(-${width},0)">`;
+    }
+
     const fretboardX = 40;
     const fretboardY = 30;
     const fretboardWidth = cfg.orientation === 'horizontal' ? width - 80 : width - 60;
@@ -156,7 +160,7 @@ function renderFretboard(config = {}) {
     }
 
     if (cfg.handed === 'left' && cfg.orientation === 'horizontal') {
-        svg = svg.replace(/viewBox="[^"]*"/, 'viewBox="0 0 ' + width + ' ' + height + '" style="transform: scaleX(-1);"');
+        svg += '</g>';
     }
 
     svg += '</svg>';
