@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+bun.lock
+
+build/
+
+.kilocode/node_modules
+
+.DS_Store
+*.log
