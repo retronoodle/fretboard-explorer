@@ -50,7 +50,7 @@ function fretboard_explorer_enqueue_assets() {
 
     wp_register_script(
         'fretboard-explorer',
-        FRETBOARD_EXPLORER_URL . 'build/index.js',
+        FRETBOARD_EXPLORER_URL . 'includes/js/fretboard-frontend.js',
         array(),
         FRETBOARD_EXPLORER_VERSION,
         true
