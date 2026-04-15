@@ -1,0 +1,17 @@
+{
+  "name": "fretboard-explorer",
+  "version": "1.0.0",
+  "description": "Interactive SVG fretboard visualization plugin for WordPress",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "dev": "wp-scripts start",
+    "lint": "wp-scripts lint",
+    "test": "wp-scripts test-unit"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.0.0"
+  },
+  "dependencies": {}
+}

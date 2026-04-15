@@ -1,0 +1,31 @@
+/**
+ * Fretboard Explorer - Editor Styles
+ */
+
+.wp-block-fretboard-explorer-fretboard {
+    padding: 20px;
+}
+
+.fretboard-preview {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.fretboard-preview svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.components-panel .components-panel__body {
+    padding: 16px;
+}
+
+.fretboard-settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.fretboard-settings-grid > .components-base-control {
+    margin-bottom: 0;
+}

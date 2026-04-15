@@ -1,0 +1,91 @@
+:root {
+    --fretboard-dark-bg: #1a1a2e;
+    --fretboard-dark-fretboard: #d4a574;
+    --fretboard-dark-nut: #f5f5dc;
+    --fretboard-dark-string: #e8e8e8;
+    --fretboard-dark-note: #4a90d9;
+    --fretboard-dark-root: #e94560;
+
+    --fretboard-light-bg: #ffffff;
+    --fretboard-light-fretboard: #f5deb3;
+    --fretboard-light-nut: #f5f5dc;
+    --fretboard-light-string: #4a4a4a;
+    --fretboard-light-note: #4a90d9;
+    --fretboard-light-root: #e94560;
+
+    --fretboard-vintage-bg: #f4e4bc;
+    --fretboard-vintage-fretboard: #8b4513;
+    --fretboard-vintage-nut: #f4e4bc;
+    --fretboard-vintage-string: #c0c0c0;
+    --fretboard-vintage-note: #daa520;
+    --fretboard-vintage-root: #cd5c5c;
+}
+
+.fretboard-container,
+.fretboard-block {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.fretboard-svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.fretboard-svg .note-marker {
+    cursor: pointer;
+    transition: transform 0.15s ease;
+}
+
+.fretboard-svg .note-marker:hover {
+    transform: scale(1.2);
+}
+
+.fretboard-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.fretboard-controls label {
+    font-weight: 500;
+    margin-right: 0.25rem;
+}
+
+.fretboard-controls select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.fretboard-audio-toggle {
+    padding: 0.5rem 1rem;
+    background: #4a90d9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fretboard-audio-toggle:hover {
+    background: #357abd;
+}
+
+.fretboard-audio-toggle.enabled {
+    background: #e94560;
+}
+
+@media (max-width: 600px) {
+    .fretboard-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .fretboard-controls select {
+        width: 100%;
+    }
+}
